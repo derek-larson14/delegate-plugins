@@ -34,16 +34,13 @@ Write to `.dispatch/settings.json`. Create the `.dispatch/` directory if needed.
 
 **If MCP Drive tools are NOT available (no tools found, or errors):**
 
-Ask the user:
+Check if rclone is configured (`rclone listremotes 2>/dev/null | grep -q "^gdrive:"`). If yes, use the local sync folder (default: `~/dispatch`).
 
-"How do your Dispatch transcripts reach this computer?"
+If no rclone either, ask the user:
 
-Options:
-- **Google Drive (synced locally)** — using Google Drive for Desktop or rclone
-- **Local folder** — Mac Shortcut, iCloud, Obsidian, or another method
+"No transcript source found. You can run `/dispatch:setup` to connect Google Drive, or tell me where your transcript folder is."
 
-If Google Drive synced locally, ask for the folder path (default: `~/dispatch`).
-If local folder, ask for the full path.
+If they give a path, use it.
 
 Create config:
 

@@ -15,11 +15,12 @@ Works in Claude Code and Co-Work. Reads transcripts from Google Drive (via MCP) 
 
 | Command | What it does |
 |---|---|
+| `setup` | Connect Google Drive and schedule automatic transcription |
 | `work` | Read transcripts and execute — research, analysis, code, summaries |
 | `voice` | Route transcripts to the right files in your workspace |
 
-## Setup
+## Transcript Sources (auto-detected)
 
-**Google Drive (MCP):** Connect at [claude.ai/settings/connectors](https://claude.ai/settings/connectors). In Co-Work, Drive is a built-in connector.
-
-**Local folder:** If no MCP, the commands ask for your transcript folder path on first run.
+1. **Google Drive MCP** — reads directly from Drive. Connect at [claude.ai/settings/connectors](https://claude.ai/settings/connectors). In Co-Work, Drive is a built-in connector.
+2. **rclone** — syncs Drive to a local folder. Run `/dispatch:setup` to install and configure.
+3. **Local folder** — any folder with transcript `.md` files.

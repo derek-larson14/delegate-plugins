@@ -29,7 +29,9 @@ Attempt to search Google Drive for files matching "dispatch" using whatever MCP 
 
 Write to `.dispatch/settings.json`.
 
-**If no MCP Drive tools:** Ask the user where transcripts are (local folder path). Create config with `"source": "local"` and `"transcript_path"`.
+**If no MCP Drive tools:** Check if rclone is configured (`rclone listremotes 2>/dev/null | grep -q "^gdrive:"`). If yes, use the local sync folder (default: `~/dispatch`). Create config with `"source": "local"` and `"transcript_path"`.
+
+**If no MCP and no rclone:** Tell the user: "No transcript source found. Run `/dispatch:setup` to connect Google Drive, or tell me where your transcript folder is."
 
 ### Read transcripts
 
