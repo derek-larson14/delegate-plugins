@@ -1,6 +1,6 @@
 # dispatch
 
-Claude Code plugin for processing voice transcripts from the [Dispatch](https://dispatch.newyorkai.org) app.
+Claude Code plugin for [Dispatch](https://dispatch.newyorkai.org) — turn voice notes into action.
 
 ## Install
 
@@ -11,33 +11,44 @@ Claude Code plugin for processing voice transcripts from the [Dispatch](https://
 
 ## Commands
 
-- **voice** — Process Dispatch voice transcripts and route ideas to the right files in your workspace
+### /dispatch:work
+
+Read your voice transcripts and start working on them. Research, analysis, code, file organization — everything actionable gets done immediately. User-only items (decisions, messages to send) get surfaced in a summary.
+
+Works with Google Drive (via MCP) or a local transcript folder.
+
+### /dispatch:voice
+
+Route voice transcripts to the right files in your workspace. For when you want to sort ideas into existing docs rather than execute on them immediately.
 
 ## How It Works
 
 1. Record on your phone with Dispatch
 2. Transcripts upload to Google Drive
-3. Run `/dispatch:voice` to route ideas to tasks, docs, and project files
+3. Run `/dispatch:work` — Claude reads the transcripts, does the research, writes the outputs
+4. Or run `/dispatch:voice` — Claude routes ideas to your task files, docs, and project folders
 
 ## Transcript Sources
 
-The command auto-detects how to read your transcripts:
+### Google Drive (via MCP)
 
-### Google Drive (via MCP) — works in Co-Work and Claude Code
+The commands read transcripts directly from Google Drive. No local sync needed.
 
-If you have a Google Drive MCP connection configured, the command reads transcripts directly from Drive. No local sync needed.
+- **Claude Code:** Connect Google Drive at [claude.ai/settings/connectors](https://claude.ai/settings/connectors)
+- **Co-Work:** Google Drive is available as a built-in connector
 
-**Setup in Claude Code:** Connect Google Drive at [claude.ai/settings/connectors](https://claude.ai/settings/connectors). The MCP tools automatically appear.
+### Local folder (fallback)
 
-**Setup in Co-Work:** Google Drive is available as a built-in connector.
+If MCP isn't available, the commands fall back to reading from a local folder. Works with Google Drive for Desktop, rclone, or any sync method.
 
-### Local folder — Claude Code only
+## What /dispatch:work Does
 
-If MCP isn't available, the command falls back to reading transcripts from a local folder. Works with Google Drive for Desktop, rclone, or any sync method that puts `.md` files on your disk.
+When you run `/dispatch:work`, Claude:
 
-## Works With Any Workspace
+- Reads all new transcripts since the last run
+- Pulls context from your workspace and Google Drive
+- Executes actionable items (research, analysis, code, summaries)
+- Writes outputs to files you can find later
+- Surfaces decisions and user-only items in a summary
 
-The command scans your project structure and routes ideas to where they fit:
-- **Code repos** — creates or appends to TODO.md, docs, or wherever you choose
-- **Notes workspaces** — routes to existing task files, project folders, and notes
-- **Mixed projects** — adapts to whatever structure exists
+Think of it as a chief of staff that listens to your voice memos and gets to work.

@@ -36,13 +36,14 @@ Platform: macOS for calendar, mail, and voice memos. Drive, delegation, and voic
 
 ### dispatch
 
-Voice transcript processor for the [Dispatch](https://dispatch.newyorkai.org) app.
+Turn voice notes into action with [Dispatch](https://dispatch.newyorkai.org).
 
 | Command | What it does |
 |---|---|
-| `/dispatch:voice` | Process Dispatch transcripts and route to workspace files |
+| `/dispatch:work` | Read transcripts and start working — research, analysis, code, summaries |
+| `/dispatch:voice` | Route transcripts to the right files in your workspace |
 
-Works on any platform.
+Reads from Google Drive (via MCP) or a local folder. Works in Claude Code and Co-Work.
 
 ## Updating
 
