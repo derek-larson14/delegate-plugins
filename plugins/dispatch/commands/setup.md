@@ -4,24 +4,22 @@ description: Set up Dispatch — connect Google Drive and schedule automatic tra
 
 # Dispatch Setup
 
-Connect Google Drive so your voice transcripts sync automatically.
+Connect your Dispatch recordings to this computer.
 
-## Step 1: Detect what's available
+## Step 1: Determine source
 
-Check if `.dispatch/settings.json` exists and has a `source` set.
+Ask the user:
 
-**If source is already set**, tell the user what's configured and ask if they want to reconfigure.
+"How do you want to access your Dispatch transcripts?"
+- **Google Drive (MCP)** — read directly from Drive, no local sync needed
+- **Google Drive (rclone)** — sync Drive to a local folder, runs on a schedule
+- **Local folder** — transcripts already land somewhere on this computer
 
-**If no settings exist**, detect what's available:
+### If MCP:
 
-### Try MCP Google Drive first
-
-Attempt to search Google Drive using whatever MCP Google Drive tools are available.
-
-**If MCP responds:** Tell the user: "Google Drive is connected via MCP. Your transcripts will be read directly from Drive — no local sync needed."
+Try using MCP Google Drive tools to search for "dispatch" on Drive. If tools respond:
 
 Create `.dispatch/settings.json`:
-
 ```json
 {
   "source": "drive-mcp",
@@ -30,50 +28,47 @@ Create `.dispatch/settings.json`:
 }
 ```
 
-Done. Skip to Step 3.
+Tell the user: "Connected to Google Drive via MCP. Run `/dispatch:work` to process your transcripts."
 
-### No MCP — set up rclone
+If MCP tools don't respond, tell the user MCP isn't available and suggest rclone or local folder instead.
 
-Check if rclone is installed and gdrive is configured:
+### If rclone:
 
+Run the bundled setup script:
 ```bash
-rclone listremotes 2>/dev/null | grep -q "^gdrive:" && echo "READY" || echo "NEEDS_SETUP"
+bash "${CLAUDE_PLUGIN_ROOT}/scripts/setup-dispatch.sh"
 ```
 
-**If READY:** Create settings with `"source": "local"` and `"transcript_path"` pointing to the sync folder (default: `~/dispatch`). Skip to Step 2.
-
-**If NEEDS_SETUP:** Run the setup script:
-
-```bash
-chmod +x "${CLAUDE_PLUGIN_ROOT}/scripts/setup-dispatch.sh"
-"${CLAUDE_PLUGIN_ROOT}/scripts/setup-dispatch.sh"
-```
-
-This installs rclone (no Homebrew needed), opens a browser for Google auth, and schedules hourly transcription via launchd.
+This installs rclone (if needed), connects Google Drive, and schedules hourly transcription via launchd.
 
 After the script completes, create `.dispatch/settings.json`:
-
 ```json
 {
-  "source": "local",
-  "transcript_path": "~/dispatch",
+  "source": "drive-rclone",
+  "transcript_path": "/Users/them/dispatch",
   "last_processed": null
 }
 ```
 
-## Step 2: Verify connection
+Use the path from `~/.dispatch/config` if the setup script created one, otherwise default to `~/dispatch`.
 
-```bash
-rclone lsd gdrive:dispatch 2>/dev/null && echo "DISPATCH_FOLDER_FOUND" || echo "NO_DISPATCH_FOLDER"
+### If local folder:
+
+Ask for the folder path. Create `.dispatch/settings.json`:
+```json
+{
+  "source": "local",
+  "transcript_path": "/path/to/transcripts",
+  "last_processed": null
+}
 ```
 
-If the dispatch folder exists, tell the user setup is complete. If not, tell them it appears after their first recording with Dispatch.
+## Step 2: Verify
 
-## Step 3: Confirm
+If rclone or local, check that the transcript folder exists and has `.md` files. If MCP, search for transcript files on Drive.
 
-Tell the user what's configured:
+Report what was set up and tell the user to run `/dispatch:work`.
 
-- **drive-mcp**: "Transcripts read directly from Google Drive. Run `/dispatch:work` to process them."
-- **local** (rclone): "Transcripts sync to `[path]` every hour. Run `/dispatch:work` to process them."
+## If already configured
 
-Remind them to record something with Dispatch on their phone to test the pipeline.
+If `.dispatch/settings.json` already exists, show the current config and ask if they want to reconfigure.

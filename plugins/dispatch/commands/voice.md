@@ -6,57 +6,11 @@ description: Process voice transcripts from Dispatch and route ideas to the righ
 
 Read new voice transcripts and help route ideas to the right places in this workspace.
 
-## Step 1: Determine transcript source
+## Step 1: Find new transcripts
 
-Check for `.dispatch/settings.json`. If it exists, read `source` and skip to Step 2.
+Check for `.dispatch/settings.json`. If it doesn't exist, tell the user: "Run `/dispatch:setup` first to connect your transcripts." Stop.
 
-If it doesn't exist, detect what's available:
-
-### Try Google Drive MCP first
-
-Attempt to search Google Drive for files matching "dispatch" using whatever MCP Google Drive tools are available. Common tool patterns: `mcp__gdrive__search`, `mcp__google-drive__search`, or any tool that searches Google Drive.
-
-**If MCP Drive tools are available and respond:**
-
-Tell the user: "I can read your Dispatch transcripts directly from Google Drive."
-
-Search for `.md` files in the `dispatch/transcripts` folder on Drive. If found, create config:
-
-```json
-{
-  "source": "drive-mcp",
-  "drive_path": "dispatch/transcripts",
-  "last_processed": null
-}
-```
-
-Write to `.dispatch/settings.json`. Create the `.dispatch/` directory if needed.
-
-**If MCP Drive tools are NOT available (no tools found, or errors):**
-
-Check if rclone is configured (`rclone listremotes 2>/dev/null | grep -q "^gdrive:"`). If yes, use the local sync folder (default: `~/dispatch`).
-
-If no rclone either, ask the user:
-
-"No transcript source found. You can run `/dispatch:setup` to connect Google Drive, or tell me where your transcript folder is."
-
-If they give a path, use it.
-
-Create config:
-
-```json
-{
-  "source": "local",
-  "transcript_path": "/path/to/transcripts",
-  "last_processed": null
-}
-```
-
-Write to `.dispatch/settings.json`.
-
-## Step 2: Find new transcripts
-
-Read `.dispatch/settings.json` for `source` and `last_processed`.
+Read `source` and `last_processed` from settings.
 
 Transcript filenames follow the pattern `dispatch_YYYYMMDD_HHMMSS.md`. These are lexicographically sortable by date. If `last_processed` is set, only process files whose names sort after it. If null, process everything.
 

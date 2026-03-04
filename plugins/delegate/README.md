@@ -1,8 +1,8 @@
 # delegate
 
-Run your life from markdown files. Plugin version of [Delegate with Claude](https://delegatewithclaude.com).
+13 commands for local Claude Code with Obsidian. Plugin version of [Delegate](https://github.com/derek-larson14/delegate) commands.
 
-Built for local Claude Code with Obsidian. **Co-Work users:** see the [dispatch plugin](../dispatch/) instead.
+**Co-Work users:** see the [dispatch plugin](../dispatch/) instead.
 
 ## Install
 
@@ -31,4 +31,4 @@ Built for local Claude Code with Obsidian. **Co-Work users:** see the [dispatch 
 
 ## Workspace Files
 
-Commands expect: `delegation.md`, `tasks.md`, `voice.md`, `roadmap.md`. Get them from [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) or create your own.
+Commands expect: `delegation.md`, `tasks.md`, `voice.md`, `roadmap.md`. Get them from [delegate](https://github.com/derek-larson14/delegate) or create your own.

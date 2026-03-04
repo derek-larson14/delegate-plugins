@@ -1,8 +1,8 @@
 # dispatch
 
-Turn voice notes into action with [Dispatch](https://dispatch.newyorkai.org).
+Take action on voice memos recorded with [Dispatch](https://dispatch.newyorkai.org).
 
-Works in Claude Code and Co-Work. Reads transcripts from Google Drive (via MCP) or a local folder.
+Claude reads transcripts and starts working. Works in Claude Code and Co-Work. Reads from Google Drive (via MCP) or a local folder.
 
 ## Install
 

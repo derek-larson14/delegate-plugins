@@ -9,29 +9,12 @@ Read voice transcripts from Dispatch and act on them. Research, analyze, build, 
 
 ## Step 1: Get transcripts
 
-Check for `.dispatch/settings.json`. If it exists, read `source`.
+Check for `.dispatch/settings.json`. If it doesn't exist, tell the user: "Run `/dispatch:setup` first to connect your transcripts." Stop.
 
-If it doesn't exist, detect what's available:
+Read `source` from settings:
 
-### Try Google Drive MCP first
-
-Attempt to search Google Drive for files matching "dispatch" using whatever MCP Google Drive tools are available.
-
-**If MCP Drive tools respond:** Search for `.md` files in `dispatch/transcripts` on Drive. Create config:
-
-```json
-{
-  "source": "drive-mcp",
-  "drive_path": "dispatch/transcripts",
-  "last_processed": null
-}
-```
-
-Write to `.dispatch/settings.json`.
-
-**If no MCP Drive tools:** Check if rclone is configured (`rclone listremotes 2>/dev/null | grep -q "^gdrive:"`). If yes, use the local sync folder (default: `~/dispatch`). Create config with `"source": "local"` and `"transcript_path"`.
-
-**If no MCP and no rclone:** Tell the user: "No transcript source found. Run `/dispatch:setup` to connect Google Drive, or tell me where your transcript folder is."
+- **`drive-mcp`**: Use MCP Google Drive tools to find `.md` files in the configured `drive_path`
+- **`drive-rclone`** or **`local`**: Read `.md` files from the configured `transcript_path`
 
 ### Read transcripts
 
