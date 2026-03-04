@@ -1,16 +1,60 @@
 ---
-description: Process voice transcripts from Dispatch and route ideas to the right files
+description: Process Dispatch transcripts and route ideas to the right files
 ---
 
-# Process voice transcripts from Dispatch
+# Route Dispatch transcripts
 
 Read new voice transcripts and help route ideas to the right places in this workspace.
 
-## Step 1: Find new transcripts
+## Step 1: Setup check
 
-Check for `.dispatch/settings.json`. If it doesn't exist, tell the user: "Run `/dispatch:setup` first to connect your transcripts." Stop.
+Check for `.dispatch/settings.json`. If it doesn't exist, run setup inline:
 
-Read `source` and `last_processed` from settings.
+Ask the user: "How do you want to access your Dispatch transcripts?"
+- **Google Drive (MCP)** -- read directly from Drive, no local sync needed
+- **Google Drive (rclone)** -- sync Drive to a local folder
+- **Local folder** -- transcripts already land somewhere on this computer
+
+**If MCP:** Try using MCP Google Drive tools to search for "dispatch" on Drive. If tools respond, create `.dispatch/settings.json`:
+```json
+{
+  "source": "drive-mcp",
+  "drive_path": "dispatch/transcripts",
+  "last_processed": null
+}
+```
+
+**If rclone:** Ask for the local sync path (default `~/dispatch`). Create `.dispatch/settings.json`:
+```json
+{
+  "source": "drive-rclone",
+  "transcript_path": "/Users/them/dispatch",
+  "last_processed": null
+}
+```
+
+**If local folder:** Ask for the folder path. Create `.dispatch/settings.json`:
+```json
+{
+  "source": "local",
+  "transcript_path": "/path/to/transcripts",
+  "last_processed": null
+}
+```
+
+Create the `.dispatch/` directory if needed.
+
+After creating settings, also write `.dispatch/CONTEXT.md`:
+```
+# Dispatch
+
+This workspace is configured to receive voice transcripts from Dispatch.
+Settings are in `.dispatch/settings.json`.
+```
+
+## Step 2: Find new transcripts
+
+Read `source` and `last_processed` from `.dispatch/settings.json`.
 
 Transcript filenames follow the pattern `dispatch_YYYYMMDD_HHMMSS.md`. These are lexicographically sortable by date. If `last_processed` is set, only process files whose names sort after it. If null, process everything.
 
@@ -33,9 +77,9 @@ If no new transcripts, say so and stop.
 
 Before routing anything, scan this project to understand what you're working with:
 
-- **Code repo** — has source files, package.json/Cargo.toml/go.mod/etc., maybe a README
-- **Notes or docs workspace** — mostly markdown, might have tasks.md, projects, notes folders
-- **Mixed** — code with docs alongside it
+- **Code repo** -- has source files, package.json/Cargo.toml/go.mod/etc., maybe a README
+- **Notes or docs workspace** -- mostly markdown, might have tasks.md, projects, notes folders
+- **Mixed** -- code with docs alongside it
 
 Note what organizational files already exist (TODO.md, TASKS.md, tasks.md, README.md, CHANGELOG.md, docs/, notes/, etc.). You'll route to what's already here rather than creating new structure.
 
@@ -45,7 +89,7 @@ For each new transcript (in chronological order):
 
 1. Read the full content
 2. Extract every distinct idea, task, or note. A single recording often contains 5+ separate thoughts. Don't miss any.
-3. Preserve the original wording — do not rewrite or summarize.
+3. Preserve the original wording -- do not rewrite or summarize.
 
 ## Step 5: Route ideas
 
