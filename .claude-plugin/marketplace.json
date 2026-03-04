@@ -1,17 +1,29 @@
 {
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "delegate-plugins",
   "description": "Delegate with Claude — commands for delegation, voice processing, email, messages, calendar, and more",
-  "author": "dereklarson",
+  "owner": {
+    "name": "derek-larson14",
+    "email": "derek-larson14@users.noreply.github.com"
+  },
   "plugins": [
     {
       "name": "delegate",
-      "path": "plugins/delegate",
-      "description": "Full delegation toolkit — task processing, voice notes, email, messages, calendar, weekly reviews, and more"
+      "description": "Full delegation toolkit — task processing, voice notes, email, messages, calendar, weekly reviews, and more",
+      "author": {
+        "name": "derek-larson14"
+      },
+      "source": "./plugins/delegate",
+      "category": "productivity"
     },
     {
       "name": "dispatch",
-      "path": "plugins/dispatch",
-      "description": "Dispatch voice transcript processor — routes transcribed voice notes to the right files"
+      "description": "Dispatch voice transcript processor — routes transcribed voice notes to the right files",
+      "author": {
+        "name": "derek-larson14"
+      },
+      "source": "./plugins/dispatch",
+      "category": "productivity"
     }
   ]
 }
