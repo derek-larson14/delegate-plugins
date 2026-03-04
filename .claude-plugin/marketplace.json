@@ -24,6 +24,15 @@
       },
       "source": "./plugins/dispatch",
       "category": "productivity"
+    },
+    {
+      "name": "delegate-cowork",
+      "description": "Delegation workflows for Co-Work — task processing, morning briefs, weekly reviews, meetings, email, and calendar powered by connectors",
+      "author": {
+        "name": "derek-larson14"
+      },
+      "source": "./plugins/delegate-cowork",
+      "category": "productivity"
     }
   ]
 }
