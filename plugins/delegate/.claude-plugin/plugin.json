@@ -2,5 +2,7 @@
   "name": "delegate",
   "version": "1.0.0",
   "description": "Delegate with Claude — task processing, voice notes, email, messages, calendar, weekly reviews, and more",
-  "author": "dereklarson"
+  "author": {
+    "name": "derek-larson14"
+  }
 }

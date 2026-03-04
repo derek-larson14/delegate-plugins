@@ -2,5 +2,7 @@
   "name": "dispatch",
   "version": "1.0.0",
   "description": "Dispatch voice transcript processor — routes transcribed voice notes to the right files",
-  "author": "dereklarson"
+  "author": {
+    "name": "derek-larson14"
+  }
 }
