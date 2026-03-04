@@ -8,11 +8,23 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 
 ### Claude Code
 
+**Step 1:** Add the marketplace
+
 ```
 /plugin marketplace add derek-larson14/delegate-plugins
+```
+
+**Step 2:** Install the plugins you want
+
+```
 /plugin install delegate
+```
+
+```
 /plugin install dispatch
 ```
+
+Or if you want the full Obsidian + Claude Code workspace with editable commands and placeholder files, download [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) instead.
 
 ### Co-Work
 
@@ -28,19 +40,17 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 
 The full toolkit for Claude Code. Task processing, voice routing, email, messages, calendar, weekly reviews, and more.
 
-- `/delegate` -- Hand off tasks to Claude
-- `/morning` -- What to focus on today
-- `/weekly` -- Review the week, plan what's next
-- `/voice` -- Process voice notes into tasks, ideas, file edits
-- `/meeting` -- Ask questions about your meeting notes
-- `/calendar` -- Check schedule, find open time (Mac only)
-- `/mail` -- Read and search email (Mac only)
-- `/messages` -- Search messages across WhatsApp, iMessage, Slack, etc.
-- `/drive` -- Browse, search, download from Google Drive
-- `/editors` -- Multiple AI reviewers critique your writing in parallel
-- `/push` -- Auto-commit and push changes
-
-Pairs with [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) to get started with a ready-made folder and placeholder files.
+- `/delegate:delegate` -- Hand off tasks to Claude
+- `/delegate:morning` -- What to focus on today
+- `/delegate:weekly` -- Review the week, plan what's next
+- `/delegate:voice` -- Process voice notes into tasks, ideas, file edits
+- `/delegate:meeting` -- Ask questions about your meeting notes
+- `/delegate:calendar` -- Check schedule, find open time (Mac only)
+- `/delegate:mail` -- Read and search email (Mac only)
+- `/delegate:messages` -- Search messages across WhatsApp, iMessage, Slack, etc.
+- `/delegate:drive` -- Browse, search, download from Google Drive
+- `/delegate:editors` -- Multiple AI reviewers critique your writing in parallel
+- `/delegate:push` -- Auto-commit and push changes
 
 ### [delegate-cowork](plugins/delegate-cowork/)
 
