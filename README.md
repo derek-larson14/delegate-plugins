@@ -24,7 +24,7 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 /plugin install dispatch
 ```
 
-Or if you want the full Obsidian + Claude Code workspace with editable commands and placeholder files, download [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) instead.
+If you want the full Obsidian + Claude Code workspace with editable commands and placeholder files, download [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) instead.
 
 ### Co-Work
 
