@@ -11,6 +11,7 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 ```
 /plugin marketplace add derek-larson14/delegate-plugins
 /plugin install delegate
+/plugin install dispatch
 ```
 
 ### Co-Work
@@ -39,7 +40,7 @@ The full toolkit for Claude Code. Task processing, voice routing, email, message
 - `/editors` -- Multiple AI reviewers critique your writing in parallel
 - `/push` -- Auto-commit and push changes
 
-New to this? Download the [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) to get started with a ready-made folder and placeholder files.
+Pairs with [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) to get started with a ready-made folder and placeholder files.
 
 ### [delegate-cowork](plugins/delegate-cowork/)
 
