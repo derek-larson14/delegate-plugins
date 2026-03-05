@@ -26,7 +26,7 @@ If not found, check the project directory too:
 find .claude -path "*/launchd/scripts/server.py" -print -quit 2>/dev/null
 ```
 
-If still not found, tell the user: "Can't find the launchd plugin. Try reinstalling with `/plugin install launchd`."
+If still not found, tell the user: "Can't find the launchd plugin. Try reinstalling with `/plugin install launchd@delegate-plugins`."
 
 Save the path to the server script for the next step.
 

@@ -8,7 +8,7 @@
 
 ```
 /plugin marketplace add derek-larson14/delegate-plugins
-/plugin install delegate
+/plugin install delegate@delegate-plugins
 ```
 
 ## Commands

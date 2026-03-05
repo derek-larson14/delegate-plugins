@@ -10,7 +10,7 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 
 ```
 /plugin marketplace add derek-larson14/delegate-plugins
-/plugin install dispatch
+/plugin install dispatch@delegate-plugins
 ```
 
 ### Co-Work (GUI)

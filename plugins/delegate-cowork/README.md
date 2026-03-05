@@ -18,7 +18,8 @@ Every command gracefully handles missing connectors. At minimum, mount your work
 ## Install
 
 ```
-/plugin install delegate-cowork
+/plugin marketplace add derek-larson14/delegate-plugins
+/plugin install delegate-cowork@delegate-plugins
 ```
 
 ## Commands
