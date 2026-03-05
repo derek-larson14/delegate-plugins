@@ -1,0 +1,8 @@
+{
+  "name": "launchd",
+  "version": "1.0.0",
+  "description": "Web dashboard for macOS LaunchAgents — see status, logs, run/load/unload agents",
+  "author": {
+    "name": "derek-larson14"
+  }
+}

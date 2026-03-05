@@ -17,15 +17,15 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 **Step 2:** Install the plugins you want
 
 ```
-/plugin install delegate
+/plugin install delegate@delegate-plugins
 ```
 
 ```
-/plugin install dispatch
+/plugin install dispatch@delegate-plugins
 ```
 
 ```
-/plugin install launchd
+/plugin install launchd@delegate-plugins
 ```
 
 If you want the full Obsidian + Claude Code workspace with editable commands and placeholder files, download [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) instead.

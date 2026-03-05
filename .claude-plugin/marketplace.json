@@ -33,6 +33,15 @@
       },
       "source": "./plugins/delegate-cowork",
       "category": "productivity"
+    },
+    {
+      "name": "launchd",
+      "description": "Web dashboard for macOS LaunchAgents — see status, logs, run/load/unload agents",
+      "author": {
+        "name": "derek-larson14"
+      },
+      "source": "./plugins/launchd",
+      "category": "productivity"
     }
   ]
 }
