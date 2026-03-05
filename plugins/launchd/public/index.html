@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Launch Dash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Launch Dash</h1>
+      <div class="header-row">
+        <span id="status-summary"></span>
+        <div class="header-right">
+          <div id="header-pills"></div>
+          <button class="btn btn-diagnose" id="btn-diagnose">Diagnose with Claude</button>
+        </div>
+      </div>
+    </header>
+    <div id="diagnose-panel"></div>
+    <main id="agents">
+      <div class="loading">Loading...</div>
+    </main>
+    <div id="hidden-section"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

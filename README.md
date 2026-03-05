@@ -24,6 +24,10 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 /plugin install dispatch
 ```
 
+```
+/plugin install launchd
+```
+
 If you want the full Obsidian + Claude Code workspace with editable commands and placeholder files, download [delegate-workspace](https://github.com/derek-larson14/delegate-workspace) instead.
 
 ### Co-Work
@@ -71,6 +75,12 @@ Take action on voice memos recorded with [Dispatch](https://dispatch.newyorkai.o
 
 - `/dispatch:work` -- Read transcripts and execute
 - `/dispatch:route` -- Route ideas to the right files
+
+### [launchd](plugins/launchd/)
+
+Web dashboard for macOS LaunchAgents. See scheduled jobs, their status, logs, and manage them from the browser. Mac only.
+
+- `/launchd:dashboard` -- Open the dashboard
 
 ---
 
