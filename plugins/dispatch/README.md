@@ -27,6 +27,13 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 |---|---|
 | `work` | Read transcripts and execute -- research, analysis, code, summaries |
 | `route` | Route transcripts to the right files in your workspace |
+| `schedule` | Set up automatic processing on a recurring schedule |
+
+## Automation
+
+Run `/dispatch:schedule` to process transcripts automatically. Works with both Claude Code (via launchd) and Co-Work (via scheduled sessions). Choose `work` for full execution or `route` for lighter routing-only.
+
+**A note on running unattended:** Voice transcripts flow through an external pipeline before reaching your agent. The `work` and `route` commands scan for prompt injection, but no scan is bulletproof. If you run on a schedule, review `.dispatch/auto.log` periodically. For an extra layer, install [Claude Guard](https://github.com/derek-larson14/claude-guard).
 
 ## Transcript Sources (auto-detected)
 

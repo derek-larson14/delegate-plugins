@@ -123,3 +123,4 @@ General rules:
 
 1. Update `last_processed` in `.dispatch/settings.json` to the filename of the newest transcript you processed
 2. Report what was routed and where
+3. Add: "Want to run this on a schedule? Use `/dispatch:schedule` to set up automatic processing."
