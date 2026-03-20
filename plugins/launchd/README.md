@@ -4,6 +4,18 @@ A localhost web dashboard for macOS LaunchAgents. See your scheduled jobs, their
 
 Zero dependencies beyond Python 3 and macOS.
 
+### Install
+
+1. Add the plugin marketplace:
+```
+/plugin marketplace add derek-larson14/delegate-plugins
+```
+
+2. Install the launchd plugin:
+```
+/plugin install launchd@delegate-plugins
+```
+
 ### Commands
 
 - `/launchd:dashboard` — Open the dashboard
