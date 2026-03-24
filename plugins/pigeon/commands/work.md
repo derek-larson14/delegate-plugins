@@ -1,40 +1,40 @@
 ---
-description: Read Dispatch voice transcripts and start working on them
+description: Read Pigeon voice transcripts and start working on them
 model: opus
 ---
 
-# Dispatch Work
+# Pigeon Work
 
-Read voice transcripts from Dispatch and act on them. Research, analyze, build, file -- do everything you can without waiting.
+Read voice transcripts from Pigeon and act on them. Research, analyze, build, file -- do everything you can without waiting.
 
 ## Step 1: Setup check
 
-Check for `.dispatch/settings.json`. If it doesn't exist, run setup inline:
+Check for `.pigeon/settings.json`. If it doesn't exist, run setup inline:
 
-Ask the user: "How do you want to access your Dispatch transcripts?"
+Ask the user: "How do you want to access your Pigeon transcripts?"
 - **Google Drive (MCP)** -- read directly from Drive, no local sync needed
 - **Google Drive (rclone)** -- sync Drive to a local folder
 - **Local folder** -- transcripts already land somewhere on this computer
 
-**If MCP:** Try using MCP Google Drive tools to search for "dispatch" on Drive. If tools respond, create `.dispatch/settings.json`:
+**If MCP:** Try using MCP Google Drive tools to search for "pigeon" on Drive. If tools respond, create `.pigeon/settings.json`:
 ```json
 {
   "source": "drive-mcp",
-  "drive_path": "dispatch/transcripts",
+  "drive_path": "pigeon/transcripts",
   "last_processed": null
 }
 ```
 
-**If rclone:** Ask for the local sync path (default `~/dispatch`). Create `.dispatch/settings.json`:
+**If rclone:** Ask for the local sync path (default `~/pigeon`). Create `.pigeon/settings.json`:
 ```json
 {
   "source": "drive-rclone",
-  "transcript_path": "/Users/them/dispatch",
+  "transcript_path": "/Users/them/pigeon",
   "last_processed": null
 }
 ```
 
-**If local folder:** Ask for the folder path. Create `.dispatch/settings.json`:
+**If local folder:** Ask for the folder path. Create `.pigeon/settings.json`:
 ```json
 {
   "source": "local",
@@ -43,26 +43,26 @@ Ask the user: "How do you want to access your Dispatch transcripts?"
 }
 ```
 
-Create the `.dispatch/` directory if needed.
+Create the `.pigeon/` directory if needed.
 
-After creating settings, also write `.dispatch/CONTEXT.md`:
+After creating settings, also write `.pigeon/CONTEXT.md`:
 ```
-# Dispatch
+# Pigeon
 
-This workspace is configured to receive voice transcripts from Dispatch.
-Settings are in `.dispatch/settings.json`.
+This workspace is configured to receive voice transcripts from Pigeon.
+Settings are in `.pigeon/settings.json`.
 ```
 
 ## Step 2: Get transcripts
 
-Read `source` from `.dispatch/settings.json`:
+Read `source` from `.pigeon/settings.json`:
 
 - **`drive-mcp`**: Use MCP Google Drive tools to find `.md` files in the configured `drive_path`
 - **`drive-rclone`** or **`local`**: Read `.md` files from the configured `transcript_path`
 
 ### Read transcripts
 
-Transcript filenames: `dispatch_YYYYMMDD_HHMMSS.md` (lexicographically sortable).
+Transcript filenames: `pigeon_YYYYMMDD_HHMMSS.md` (lexicographically sortable).
 
 If `last_processed` is set, only process files newer than it. If null, process everything.
 
@@ -165,7 +165,7 @@ If a section has no items, omit it.
 
 ## Step 7: Update state
 
-Update `last_processed` in `.dispatch/settings.json` to the newest transcript filename.
+Update `last_processed` in `.pigeon/settings.json` to the newest transcript filename.
 
 ## Rules
 
@@ -182,4 +182,4 @@ Update `last_processed` in `.dispatch/settings.json` to the newest transcript fi
 
 Once the summary is displayed, add:
 
-"Want to run this on a schedule? Use `/dispatch:schedule` to set up automatic processing."
+"Want to run this on a schedule? Use `/pigeon:schedule` to set up automatic processing."

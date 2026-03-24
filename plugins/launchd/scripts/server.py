@@ -211,7 +211,7 @@ def get_launchctl_status():
 
 def humanize_label(label):
     prefixes = [
-        "com.claude.", "com.exec.", "com.dispatch.",
+        "com.claude.", "com.exec.", "com.dispatch.", "com.pigeon.",
         "com.voicememos.", "com.voicevault.",
         "com.apple.", "com.google.", "com.",
     ]

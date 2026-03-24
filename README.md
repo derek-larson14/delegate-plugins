@@ -21,7 +21,7 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 ```
 
 ```
-/plugin install dispatch@delegate-plugins
+/plugin install pigeon@delegate-plugins
 ```
 
 ```
@@ -69,12 +69,12 @@ The same workflows adapted for Co-Work. Uses MCP connectors (Calendar, Gmail, Gi
 - `/delegate-cowork:editors` -- Multi-perspective writing feedback
 - `/delegate-cowork:research` -- Deep web research
 
-### [dispatch](plugins/dispatch/)
+### [pigeon](plugins/pigeon/)
 
-Take action on voice memos recorded with [Dispatch](https://dispatch.newyorkai.org). Claude reads transcripts and starts working. Works in both Claude Code and Co-Work.
+Take action on voice memos recorded with [Pigeon](https://pigeon.newyorkai.org). Claude reads transcripts and starts working. Works in both Claude Code and Co-Work.
 
-- `/dispatch:work` -- Read transcripts and execute
-- `/dispatch:route` -- Route ideas to the right files
+- `/pigeon:work` -- Read transcripts and execute
+- `/pigeon:route` -- Route ideas to the right files
 
 ### [launchd](plugins/launchd/)
 

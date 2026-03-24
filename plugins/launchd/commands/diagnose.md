@@ -10,7 +10,7 @@ Check the health of all LaunchAgents and report any issues.
 ## Step 1: Get agent status
 
 ```bash
-launchctl list | grep -E "com\.(claude|exec|dispatch|voicememos|voicevault)"
+launchctl list | grep -E "com\.(claude|exec|dispatch|pigeon|voicememos|voicevault)"
 ```
 
 Parse the output. Each line has: PID (or -), last exit status (or -), label.
@@ -22,7 +22,7 @@ Parse the output. Each line has: PID (or -), last exit status (or -), label.
 Also check which plists exist:
 
 ```bash
-ls ~/Library/LaunchAgents/com.{claude,exec,dispatch,voicememos,voicevault}.*.plist 2>/dev/null
+ls ~/Library/LaunchAgents/com.{claude,exec,dispatch,pigeon,voicememos,voicevault}.*.plist 2>/dev/null
 ```
 
 ## Step 2: Read error logs for problem agents

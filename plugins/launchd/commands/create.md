@@ -12,7 +12,7 @@ Walk the user through creating a new scheduled LaunchAgent. Show existing agents
 Read the current agents to show patterns:
 
 ```bash
-launchctl list | grep -E "com\.(claude|exec|dispatch)" 2>/dev/null
+launchctl list | grep -E "com\.(claude|exec|dispatch|pigeon)" 2>/dev/null
 ```
 
 For each loaded agent, show a high-level summary:
@@ -65,7 +65,7 @@ If it involves Claude, add these to the script:
 Generate a label following the existing convention:
 - `com.claude.[name]` — for agents that run Claude
 - `com.exec.[name]` — for agents that manage the exec workspace
-- `com.dispatch.[name]` — for Dispatch-related agents
+- `com.pigeon.[name]` — for Pigeon-related agents
 
 Confirm with the user.
 

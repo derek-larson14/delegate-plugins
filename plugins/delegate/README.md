@@ -2,7 +2,7 @@
 
 13 commands for local Claude Code with Obsidian. Plugin version of [Delegate](https://github.com/derek-larson14/delegate) commands.
 
-**Co-Work users:** see the [dispatch plugin](../dispatch/) instead.
+**Co-Work users:** see the [pigeon plugin](../pigeon/) instead.
 
 ## Install
 

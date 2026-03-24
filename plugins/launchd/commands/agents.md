@@ -12,13 +12,13 @@ The user wants to enable or disable one or more LaunchAgents. Parse their reques
 Run this to see all agents and their status:
 
 ```bash
-launchctl list | grep -E "com\.(claude|exec|dispatch|voicememos|voicevault)" 2>/dev/null
+launchctl list | grep -E "com\.(claude|exec|dispatch|pigeon|voicememos|voicevault)" 2>/dev/null
 ```
 
 Also list available plist files:
 
 ```bash
-ls ~/Library/LaunchAgents/com.{claude,exec,dispatch,voicememos,voicevault}.*.plist 2>/dev/null
+ls ~/Library/LaunchAgents/com.{claude,exec,dispatch,pigeon,voicememos,voicevault}.*.plist 2>/dev/null
 ```
 
 Show the user a brief summary: agent name, whether it's loaded, PID if running, last exit code.

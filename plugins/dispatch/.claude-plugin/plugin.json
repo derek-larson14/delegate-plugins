@@ -1,8 +1,0 @@
-{
-  "name": "dispatch",
-  "version": "1.1.0",
-  "description": "Claude routes and acts on AI voice notes recorded through Dispatch",
-  "author": {
-    "name": "derek-larson14"
-  }
-}

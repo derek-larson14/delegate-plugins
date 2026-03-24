@@ -1,6 +1,6 @@
-# dispatch
+# pigeon
 
-Take action on voice memos recorded with [Dispatch](https://dispatch.newyorkai.org).
+Take action on voice memos recorded with [Pigeon](https://pigeon.newyorkai.org).
 
 Claude reads transcripts and starts working. Works in Claude Code and Co-Work. Reads from Google Drive (via MCP) or a local folder.
 
@@ -10,7 +10,7 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 
 ```
 /plugin marketplace add derek-larson14/delegate-plugins
-/plugin install dispatch@delegate-plugins
+/plugin install pigeon@delegate-plugins
 ```
 
 ### Co-Work (GUI)
@@ -19,7 +19,7 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 2. Go to the **Personal** tab
 3. Click **Add marketplace from GitHub**
 4. Paste: `derek-larson14/delegate-plugins`
-5. Install **dispatch**
+5. Install **pigeon**
 
 ## Commands
 
@@ -31,9 +31,9 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 
 ## Automation
 
-Run `/dispatch:schedule` to process transcripts automatically. Works with both Claude Code (via launchd) and Co-Work (via scheduled sessions). Choose `work` for full execution or `route` for lighter routing-only.
+Run `/pigeon:schedule` to process transcripts automatically. Works with both Claude Code (via launchd) and Co-Work (via scheduled sessions). Choose `work` for full execution or `route` for lighter routing-only.
 
-**A note on running unattended:** Voice transcripts flow through an external pipeline before reaching your agent. The `work` and `route` commands scan for prompt injection, but no scan is bulletproof. If you run on a schedule, review `.dispatch/auto.log` periodically. For an extra layer, install [Claude Guard](https://github.com/derek-larson14/claude-guard).
+**A note on running unattended:** Voice transcripts flow through an external pipeline before reaching your agent. The `work` and `route` commands scan for prompt injection, but no scan is bulletproof. If you run on a schedule, review `.pigeon/auto.log` periodically. For an extra layer, install [Claude Guard](https://github.com/derek-larson14/claude-guard).
 
 ## Transcript Sources (auto-detected)
 

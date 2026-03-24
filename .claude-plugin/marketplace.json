@@ -17,12 +17,12 @@
       "category": "productivity"
     },
     {
-      "name": "dispatch",
-      "description": "Claude routes and acts on AI voice notes recorded through Dispatch",
+      "name": "pigeon",
+      "description": "Claude routes and acts on AI voice notes recorded through Pigeon",
       "author": {
         "name": "derek-larson14"
       },
-      "source": "./plugins/dispatch",
+      "source": "./plugins/pigeon",
       "category": "productivity"
     },
     {

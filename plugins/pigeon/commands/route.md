@@ -1,39 +1,39 @@
 ---
-description: Process Dispatch transcripts and route ideas to the right files
+description: Process Pigeon transcripts and route ideas to the right files
 ---
 
-# Route Dispatch transcripts
+# Route Pigeon transcripts
 
 Read new voice transcripts and help route ideas to the right places in this workspace.
 
 ## Step 1: Setup check
 
-Check for `.dispatch/settings.json`. If it doesn't exist, run setup inline:
+Check for `.pigeon/settings.json`. If it doesn't exist, run setup inline:
 
-Ask the user: "How do you want to access your Dispatch transcripts?"
+Ask the user: "How do you want to access your Pigeon transcripts?"
 - **Google Drive (MCP)** -- read directly from Drive, no local sync needed
 - **Google Drive (rclone)** -- sync Drive to a local folder
 - **Local folder** -- transcripts already land somewhere on this computer
 
-**If MCP:** Try using MCP Google Drive tools to search for "dispatch" on Drive. If tools respond, create `.dispatch/settings.json`:
+**If MCP:** Try using MCP Google Drive tools to search for "pigeon" on Drive. If tools respond, create `.pigeon/settings.json`:
 ```json
 {
   "source": "drive-mcp",
-  "drive_path": "dispatch/transcripts",
+  "drive_path": "pigeon/transcripts",
   "last_processed": null
 }
 ```
 
-**If rclone:** Ask for the local sync path (default `~/dispatch`). Create `.dispatch/settings.json`:
+**If rclone:** Ask for the local sync path (default `~/pigeon`). Create `.pigeon/settings.json`:
 ```json
 {
   "source": "drive-rclone",
-  "transcript_path": "/Users/them/dispatch",
+  "transcript_path": "/Users/them/pigeon",
   "last_processed": null
 }
 ```
 
-**If local folder:** Ask for the folder path. Create `.dispatch/settings.json`:
+**If local folder:** Ask for the folder path. Create `.pigeon/settings.json`:
 ```json
 {
   "source": "local",
@@ -42,30 +42,30 @@ Ask the user: "How do you want to access your Dispatch transcripts?"
 }
 ```
 
-Create the `.dispatch/` directory if needed.
+Create the `.pigeon/` directory if needed.
 
-After creating settings, also write `.dispatch/CONTEXT.md`:
+After creating settings, also write `.pigeon/CONTEXT.md`:
 ```
-# Dispatch
+# Pigeon
 
-This workspace is configured to receive voice transcripts from Dispatch.
-Settings are in `.dispatch/settings.json`.
+This workspace is configured to receive voice transcripts from Pigeon.
+Settings are in `.pigeon/settings.json`.
 ```
 
 ## Step 2: Find new transcripts
 
-Read `source` and `last_processed` from `.dispatch/settings.json`.
+Read `source` and `last_processed` from `.pigeon/settings.json`.
 
-Transcript filenames follow the pattern `dispatch_YYYYMMDD_HHMMSS.md`. These are lexicographically sortable by date. If `last_processed` is set, only process files whose names sort after it. If null, process everything.
+Transcript filenames follow the pattern `pigeon_YYYYMMDD_HHMMSS.md`. These are lexicographically sortable by date. If `last_processed` is set, only process files whose names sort after it. If null, process everything.
 
 ### Source: drive-mcp
 
 Use MCP Google Drive tools to:
-1. Search for `.md` files in the `drive_path` folder (default: `dispatch/transcripts`)
+1. Search for `.md` files in the `drive_path` folder (default: `pigeon/transcripts`)
 2. Filter to files newer than `last_processed` (by filename sort order)
 3. Read the content of each new file directly from Drive
 
-If the Drive search returns nothing or the folder doesn't exist, tell the user: "No transcripts found in Google Drive at `dispatch/transcripts/`. Record something with Dispatch first."
+If the Drive search returns nothing or the folder doesn't exist, tell the user: "No transcripts found in Google Drive at `pigeon/transcripts/`. Record something with Pigeon first."
 
 ### Source: local
 
@@ -121,6 +121,6 @@ General rules:
 
 ## Step 6: After processing
 
-1. Update `last_processed` in `.dispatch/settings.json` to the filename of the newest transcript you processed
+1. Update `last_processed` in `.pigeon/settings.json` to the filename of the newest transcript you processed
 2. Report what was routed and where
-3. Add: "Want to run this on a schedule? Use `/dispatch:schedule` to set up automatic processing."
+3. Add: "Want to run this on a schedule? Use `/pigeon:schedule` to set up automatic processing."
