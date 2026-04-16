@@ -1,6 +1,6 @@
 {
   "name": "finance",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Claude as your financial advisor — connects to your banks using Era Finance or the Mercury API, and reasons over your accounts with the full context of your calendar, email, and work.",
   "author": {
     "name": "derek-larson14"
