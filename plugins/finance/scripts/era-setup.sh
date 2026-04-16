@@ -142,26 +142,6 @@ fi
 echo "$TOKEN_RESP" > "$TOKEN_FILE"
 chmod 600 "$TOKEN_FILE"
 
-# Create finance folder with context template if it doesn't exist
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-FINANCE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)/finance"
-if [ ! -d "$FINANCE_DIR" ]; then
-    mkdir -p "$FINANCE_DIR"
-    cat > "$FINANCE_DIR/context.md" << 'TMPL'
-# Financial Context
-
-## Accounts
-<!-- List your accounts here so Claude knows what you're working with -->
-
-## Goals
-<!-- What are you trying to achieve financially? -->
-
-## Notes
-<!-- Anything Claude should know — irregular income, upcoming big expenses, etc -->
-TMPL
-    echo "Created $FINANCE_DIR/context.md — fill in your financial context."
-fi
-
 echo ""
 echo "Success! Era Finance connected."
 echo "Tokens stored at: $TOKEN_FILE"
