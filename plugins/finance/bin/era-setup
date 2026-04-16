@@ -14,7 +14,20 @@ set -e
 TOKEN_DIR="$HOME/.era-finance"
 TOKEN_FILE="$TOKEN_DIR/tokens.json"
 CLIENT_FILE="$TOKEN_DIR/client.json"
-CALLBACK_PORT=8765
+
+# Find a free TCP port in 8765-8774 for the OAuth callback listener.
+# Fixes silent failures when another local tool (e.g. claude-anywhere relay)
+# is already bound to 8765 — the browser redirect would hit that process
+# instead of our nc listener, and the auth flow would appear to just "close."
+pick_callback_port() {
+    for p in $(seq 8765 8774); do
+        if ! nc -z 127.0.0.1 "$p" 2>/dev/null; then
+            echo "$p"
+            return 0
+        fi
+    done
+    return 1
+}
 
 # Extract a string value from JSON (handles simple flat objects)
 json_get() {
@@ -31,7 +44,7 @@ if [ -f "$TOKEN_FILE" ] && [ "$1" != "--force" ]; then
     echo ""
     echo "Testing connection..."
     SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-    if "$SCRIPT_DIR/era-fetch.sh" list-tools 2>/dev/null | grep -q .; then
+    if "$SCRIPT_DIR/era-fetch" list-tools 2>/dev/null | grep -q .; then
         echo "Connection works."
         exit 0
     else
@@ -41,6 +54,17 @@ if [ -f "$TOKEN_FILE" ] && [ "$1" != "--force" ]; then
 fi
 
 mkdir -p "$TOKEN_DIR"
+
+CALLBACK_PORT=$(pick_callback_port) || {
+    echo "Error: No free port in range 8765-8774." >&2
+    echo "Check what is holding these ports: lsof -iTCP:8765-8774 -sTCP:LISTEN" >&2
+    exit 1
+}
+
+if [ "$CALLBACK_PORT" != "8765" ]; then
+    HOLDER=$(lsof -iTCP:8765 -sTCP:LISTEN -Fc 2>/dev/null | grep '^c' | head -1 | cut -c2-)
+    echo "Port 8765 is in use${HOLDER:+ by $HOLDER} — using port $CALLBACK_PORT instead."
+fi
 
 # Step 1: Dynamic client registration
 echo "Registering client with Era..."
@@ -142,4 +166,4 @@ echo ""
 echo "Success! Era Finance connected."
 echo "Tokens stored at: $TOKEN_FILE"
 echo ""
-echo "Test with: era-fetch.sh list-tools"
+echo "Test with: era-fetch list-tools"

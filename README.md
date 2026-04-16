@@ -76,6 +76,14 @@ Take action on voice memos recorded with [Pigeon](https://pigeon.newyorkai.org).
 - `/pigeon:work` -- Read transcripts and execute
 - `/pigeon:route` -- Route ideas to the right files
 
+### [finance](plugins/finance/)
+
+Personal finance powered by [Era](https://era.app). Connects your bank accounts, credit cards, investments, and loans via Plaid so Claude can reason over your actual money. Works in both Claude Code and Co-Work.
+
+- `/finance:ask` -- Snapshot, analysis, answers to any money question
+- `/finance:import` -- Bring in CSVs (Venmo, PayPal, anything Plaid can't reach) and manage the context file
+- `/finance:mercury` -- Pull Mercury banking data via read-only API token (Claude Code only)
+
 ### [launchd](plugins/launchd/)
 
 Web dashboard for macOS LaunchAgents. See scheduled jobs, their status, logs, and manage them from the browser. Mac only.

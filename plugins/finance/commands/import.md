@@ -67,7 +67,7 @@ Write updates back to the file. Keep it short and scannable — this gets loaded
 
 **CLI:**
 ```bash
-${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call accounts__list_financial_accounts
+era-fetch call accounts__list_financial_accounts
 ```
 
 **MCP:** call `accounts__list_financial_accounts`.

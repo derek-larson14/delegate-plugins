@@ -1,7 +1,7 @@
 {
   "name": "finance",
   "version": "1.0.0",
-  "description": "Personal finance powered by Era Finance — accounts, spending, patterns, insights",
+  "description": "Claude as your financial advisor — connects to your banks using Era Finance or the Mercury API, and reasons over your accounts with the full context of your calendar, email, and work.",
   "author": {
     "name": "derek-larson14"
   }

@@ -15,8 +15,9 @@ Personal finance powered by Era Finance. Works in Claude Code (CLI) and Co-Work.
 
 ### Commands
 
-- `/finance:ask` — Financial snapshot and analysis
+- `/finance:ask` — Financial snapshot and analysis (Era)
 - `/finance:import` — Connect accounts, import CSVs, manage data sources
+- `/finance:mercury` — Pull Mercury banking data via read-only API token
 
 ### How it works
 
