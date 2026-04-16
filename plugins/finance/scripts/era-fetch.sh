@@ -1,12 +1,26 @@
 #!/bin/bash
 # Fetch data from Era Finance via MCP-over-HTTP
-# Deps: curl, python3 (both ship with macOS and Linux)
+# Deps: curl, perl (both ship with macOS and standard Linux desktop distros;
+# JSON::PP is core Perl since 5.14 — present on every macOS and normal Linux install)
 #
 # Usage:
 #   ./era-fetch.sh list-tools              — show available Era tools
 #   ./era-fetch.sh call <tool> [json_args] — call a specific tool
 #   ./era-fetch.sh snapshot                — pull balances + recent transactions
 set -e
+
+# Preflight — fail fast with a clear message if perl or JSON::PP is missing
+# (rare edge case: stripped minimal Linux or Alpine without full perl package)
+if ! command -v perl >/dev/null 2>&1; then
+    echo "Error: era-fetch requires perl (not found on PATH)." >&2
+    echo "macOS: comes preinstalled. Linux: install with 'apt install perl' or equivalent." >&2
+    exit 1
+fi
+if ! perl -MJSON::PP -e1 >/dev/null 2>&1; then
+    echo "Error: era-fetch requires Perl's JSON::PP module (missing from your perl install)." >&2
+    echo "Debian/Ubuntu minimal: install full perl with 'apt install perl'." >&2
+    exit 1
+fi
 
 TOKEN_DIR="$HOME/.era-finance"
 TOKEN_FILE="$TOKEN_DIR/tokens.json"
@@ -20,28 +34,22 @@ json_get() {
 
 # Extract MCP result text content (strips JSON-RPC wrapping)
 extract_content() {
-    python3 -c '
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    content = (data.get("result") or {}).get("content") or []
-    print("\n".join(c["text"] for c in content if c.get("text")))
-except Exception:
-    pass
-'
+    perl -MJSON::PP -0777 -ne '
+        my $d = eval { decode_json($_) };
+        exit 0 unless $d && ref($d) eq "HASH";
+        my $c = $d->{result}{content} // [];
+        for (@$c) { print $_->{text}, "\n" if defined $_->{text} }
+    '
 }
 
 # Extract tool names from tools/list response
 extract_tool_names() {
-    python3 -c '
-import sys, json
-try:
-    data = json.load(sys.stdin)
-    tools = (data.get("result") or {}).get("tools") or []
-    print("\n".join("  " + t["name"] for t in tools))
-except Exception:
-    pass
-'
+    perl -MJSON::PP -0777 -ne '
+        my $d = eval { decode_json($_) };
+        exit 0 unless $d && ref($d) eq "HASH";
+        my $t = $d->{result}{tools} // [];
+        for (@$t) { print "  ", $_->{name}, "\n" if defined $_->{name} }
+    '
 }
 
 # --- Token management ---

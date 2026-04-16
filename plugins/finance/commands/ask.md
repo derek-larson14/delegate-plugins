@@ -43,6 +43,8 @@ For specific queries:
 ${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call <tool_name> '{"arg":"value"}'
 ```
 
+**IMPORTANT — do not post-process the script output.** Call `era-fetch.sh` on its own and read the result directly. Do NOT pipe through `python3`, `jq`, `node`, or any other parser to reformat, pretty-print, or extract fields. The script already unwraps the MCP JSON-RPC envelope internally and returns clean JSON (or clean text for prose content) — adding a post-processor will choke on multiline content, unicode escapes, or embedded quotes and surface a misleading JSON-decode error instead of useful data. If you need a specific field, read the full output into context and pull the field yourself.
+
 **MCP path:** Call Era tools directly. For a default snapshot:
 1. `knowledge__get_financial_context_and_overview` — full picture
 2. `transactions__list_transactions` with `page_size: 25` — recent activity
