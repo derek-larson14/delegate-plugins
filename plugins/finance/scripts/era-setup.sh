@@ -44,7 +44,7 @@ if [ -f "$TOKEN_FILE" ] && [ "$1" != "--force" ]; then
     echo ""
     echo "Testing connection..."
     SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-    if "$SCRIPT_DIR/era-fetch" list-tools 2>/dev/null | grep -q .; then
+    if "$SCRIPT_DIR/era-fetch.sh" list-tools 2>/dev/null | grep -q .; then
         echo "Connection works."
         exit 0
     else
@@ -166,4 +166,4 @@ echo ""
 echo "Success! Era Finance connected."
 echo "Tokens stored at: $TOKEN_FILE"
 echo ""
-echo "Test with: era-fetch list-tools"
+echo "Try it with: /finance:ask"

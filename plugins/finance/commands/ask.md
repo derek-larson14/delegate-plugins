@@ -18,7 +18,7 @@ Before doing anything, figure out which path you're on. Try this single probe:
 Interpret the result:
 
 - **Bash runs and outputs `CLI_READY`** → CLI path, go to Step 2
-- **Bash runs and outputs `CLI_UNSET` or `CLI_PARTIAL`** → CLI environment but not set up; run `era-setup` (opens browser for Era OAuth), then Step 2. Expired tokens self-heal — `era-fetch` auto-launches re-auth.
+- **Bash runs and outputs `CLI_UNSET` or `CLI_PARTIAL`** → CLI environment but not set up; run `${CLAUDE_PLUGIN_ROOT}/scripts/era-setup.sh` (opens browser for Era OAuth), then Step 2. Expired tokens self-heal — `era-fetch.sh` auto-launches re-auth.
 - **Bash is not available** → Co-Work. Check if Era MCP tools are exposed (look for any tool starting with `knowledge__`, `transactions__`, or `accounts__`)
   - **Era tools present** → MCP path, go to Step 2
   - **Era tools missing** → walk the user through adding the Era connector:
@@ -34,13 +34,13 @@ The user does not need an Era Finance account preexisting — signup happens ins
 **CLI path:**
 
 ```bash
-era-fetch snapshot
+${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh snapshot
 ```
 
 For specific queries:
 
 ```bash
-era-fetch call <tool_name> '{"arg":"value"}'
+${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call <tool_name> '{"arg":"value"}'
 ```
 
 **MCP path:** Call Era tools directly. For a default snapshot:
@@ -52,14 +52,14 @@ era-fetch call <tool_name> '{"arg":"value"}'
 
 | What you need | CLI | MCP tool |
 |---|---|---|
-| Account balances | `era-fetch call accounts__list_financial_accounts` | `accounts__list_financial_accounts` |
-| Search transactions | `era-fetch call transactions__search_transactions '{"query":"..."}'` | `transactions__search_transactions` |
-| Spending breakdown | `era-fetch call insights__analyze_spending '{"period":"current_month"}'` | `insights__analyze_spending` |
-| Compare periods | `era-fetch call insights__compare_spending_periods '{...}'` | `insights__compare_spending_periods` |
-| Cash flow | `era-fetch call insights__get_cash_flow` | `insights__get_cash_flow` |
-| Forecast | `era-fetch call insights__forecast_spending` | `insights__forecast_spending` |
-| Recurring charges | `era-fetch call transactions__list_recurring_charges` | `transactions__list_recurring_charges` |
-| Categories | `era-fetch call transactions__list_spending_categories` | `transactions__list_spending_categories` |
+| Account balances | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call accounts__list_financial_accounts` | `accounts__list_financial_accounts` |
+| Search transactions | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call transactions__search_transactions '{"query":"..."}'` | `transactions__search_transactions` |
+| Spending breakdown | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call insights__analyze_spending '{"period":"current_month"}'` | `insights__analyze_spending` |
+| Compare periods | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call insights__compare_spending_periods '{...}'` | `insights__compare_spending_periods` |
+| Cash flow | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call insights__get_cash_flow` | `insights__get_cash_flow` |
+| Forecast | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call insights__forecast_spending` | `insights__forecast_spending` |
+| Recurring charges | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call transactions__list_recurring_charges` | `transactions__list_recurring_charges` |
+| Categories | `${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call transactions__list_spending_categories` | `transactions__list_spending_categories` |
 
 ## Step 3 — Load context
 

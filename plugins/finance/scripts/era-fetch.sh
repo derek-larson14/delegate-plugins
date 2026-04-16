@@ -3,9 +3,9 @@
 # Deps: curl, python3 (both ship with macOS and Linux)
 #
 # Usage:
-#   ./era-fetch list-tools              — show available Era tools
-#   ./era-fetch call <tool> [json_args] — call a specific tool
-#   ./era-fetch snapshot                — pull balances + recent transactions
+#   ./era-fetch.sh list-tools              — show available Era tools
+#   ./era-fetch.sh call <tool> [json_args] — call a specific tool
+#   ./era-fetch.sh snapshot                — pull balances + recent transactions
 set -e
 
 TOKEN_DIR="$HOME/.era-finance"
@@ -48,7 +48,7 @@ except Exception:
 
 load_tokens() {
     if [ ! -f "$TOKEN_FILE" ]; then
-        echo "Error: Not set up. Run era-setup first." >&2
+        echo "Error: Not set up. Run era-setup.sh first." >&2
         exit 1
     fi
     ACCESS_TOKEN=$(cat "$TOKEN_FILE" | json_get access_token)
@@ -58,7 +58,7 @@ load_tokens() {
 reauth() {
     echo "Era token could not be refreshed — launching re-auth in browser..." >&2
     SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-    "$SCRIPT_DIR/era-setup" --force >&2 || exit 1
+    "$SCRIPT_DIR/era-setup.sh" --force >&2 || exit 1
     load_tokens
 }
 
@@ -142,7 +142,7 @@ case "${1:-snapshot}" in
         ;;
 
     call)
-        TOOL_NAME="${2:?Usage: era-fetch call <tool_name> [json_args]}"
+        TOOL_NAME="${2:?Usage: era-fetch.sh call <tool_name> [json_args]}"
         TOOL_ARGS="${3:-{}}"
         mcp_init
         mcp_call "tools/call" "{\"name\":\"${TOOL_NAME}\",\"arguments\":${TOOL_ARGS}}" 3 | extract_content
@@ -166,14 +166,14 @@ case "${1:-snapshot}" in
         ;;
 
     raw)
-        METHOD="${2:?Usage: era-fetch raw <method> <params_json>}"
+        METHOD="${2:?Usage: era-fetch.sh raw <method> <params_json>}"
         PARAMS="${3:-{}}"
         mcp_init
         mcp_call "$METHOD" "$PARAMS" 99
         ;;
 
     *)
-        echo "Usage: era-fetch [command]"
+        echo "Usage: era-fetch.sh [command]"
         echo ""
         echo "Commands:"
         echo "  list-tools              Show available Era tools"
