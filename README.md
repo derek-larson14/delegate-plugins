@@ -25,6 +25,10 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 ```
 
 ```
+/plugin install finance@delegate-plugins
+```
+
+```
 /plugin install launchd@delegate-plugins
 ```
 
@@ -82,7 +86,6 @@ Personal finance powered by [Era](https://era.app). Connects your bank accounts,
 
 - `/finance:ask` -- Snapshot, analysis, answers to any money question
 - `/finance:import` -- Bring in CSVs (Venmo, PayPal, anything Plaid can't reach) and manage the context file
-- `/finance:mercury` -- Pull Mercury banking data via read-only API token (Claude Code only)
 
 ### [launchd](plugins/launchd/)
 
