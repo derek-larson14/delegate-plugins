@@ -27,6 +27,8 @@ Interpret the result:
     3. Sign in to Era and authorize
     4. Re-run `/finance:ask`
 
+    **Flag before they add it:** Co-Work connectors are user-level, not per-conversation. Once Era is enabled, those tools are available in every Co-Work conversation, not just `/finance:ask`. That's fine if they want to ask ad-hoc finance questions anywhere — it's a footgun if they want tight scoping. If they want tight scoping, recommend the Claude Code path instead.
+
 The user does not need an Era Finance account preexisting — signup happens inside the OAuth / connector flow.
 
 ## Step 2 — Pull data
