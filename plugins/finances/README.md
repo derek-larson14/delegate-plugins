@@ -1,11 +1,11 @@
-## Finance
+## Finances
 
-Personal finance powered by Era Finance. Works in Claude Code (CLI) and Co-Work.
+Personal finances powered by Era Finance. Works in Claude Code (CLI) and Co-Work.
 
 ### Install
 
 ```
-/plugin install finance@delegate-plugins
+/plugin install finances@delegate-plugins
 ```
 
 ### Prerequisites
@@ -15,9 +15,8 @@ Personal finance powered by Era Finance. Works in Claude Code (CLI) and Co-Work.
 
 ### Commands
 
-- `/finance:ask` — Financial snapshot and analysis (Era)
-- `/finance:import` — Connect accounts, import CSVs, manage data sources
-- `/finance:mercury` — Pull Mercury banking data via read-only API token
+- `/finances:ask` — Financial snapshot and analysis (Era)
+- `/finances:import` — Connect accounts, import CSVs, manage data sources
 
 ### How it works
 

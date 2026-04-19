@@ -25,7 +25,7 @@ Learn more at [Delegate with Claude](https://delegatewithclaude.com).
 ```
 
 ```
-/plugin install finance@delegate-plugins
+/plugin install finances@delegate-plugins
 ```
 
 ```
@@ -80,12 +80,12 @@ Take action on voice memos recorded with [Pigeon](https://pigeon.newyorkai.org).
 - `/pigeon:work` -- Read transcripts and execute
 - `/pigeon:route` -- Route ideas to the right files
 
-### [finance](plugins/finance/)
+### [finances](plugins/finances/)
 
-Personal finance powered by [Era](https://era.app). Connects your bank accounts, credit cards, investments, and loans via Plaid so Claude can reason over your actual money. Works in both Claude Code and Co-Work.
+Personal finances powered by [Era](https://era.app). Connects your bank accounts, credit cards, investments, and loans via Plaid so Claude can reason over your actual money. Works in both Claude Code and Co-Work.
 
-- `/finance:ask` -- Snapshot, analysis, answers to any money question
-- `/finance:import` -- Bring in CSVs (Venmo, PayPal, anything Plaid can't reach) and manage the context file
+- `/finances:ask` -- Snapshot, analysis, answers to any money question
+- `/finances:import` -- Bring in CSVs (Venmo, PayPal, anything Plaid can't reach) and manage the context file
 
 ### [launchd](plugins/launchd/)
 

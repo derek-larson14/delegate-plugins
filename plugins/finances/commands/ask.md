@@ -25,9 +25,9 @@ Interpret the result:
     1. Co-Work settings (gear icon) → Connectors or MCP Servers
     2. Add connector with URL: `context.era.app`
     3. Sign in to Era and authorize
-    4. Re-run `/finance:ask`
+    4. Re-run `/finances:ask`
 
-    **Flag before they add it:** Co-Work connectors are user-level, not per-conversation. Once Era is enabled, those tools are available in every Co-Work conversation, not just `/finance:ask`. That's fine if they want to ask ad-hoc finance questions anywhere — it's a footgun if they want tight scoping. If they want tight scoping, recommend the Claude Code path instead.
+    **Flag before they add it:** Co-Work connectors are user-level, not per-conversation. Once Era is enabled, those tools are available in every Co-Work conversation, not just `/finances:ask`. That's fine if they want to ask ad-hoc finance questions anywhere — it's a footgun if they want tight scoping. If they want tight scoping, recommend the Claude Code path instead.
 
 The user does not need an Era Finance account preexisting — signup happens inside the OAuth / connector flow.
 
@@ -70,15 +70,15 @@ ${CLAUDE_PLUGIN_ROOT}/scripts/era-fetch.sh call <tool_name> '{"arg":"value"}'
 Check for a context file:
 
 ```
-finance/context.md
-ops/finance/context.md
+finances/context.md
+ops/finances/context.md
 ```
 
-If it exists, use it (goals, accounts Era can't see, upcoming expenses). If it doesn't, don't block — just note at the end that `/finance:import` can set one up.
+If it exists, use it (goals, accounts Era can't see, upcoming expenses). If it doesn't, don't block — just note at the end that `/finances:import` can set one up.
 
 ## Step 4 — Surface what matters
 
-If the user ran `/finance:ask` without a specific ask, give a useful snapshot:
+If the user ran `/finances:ask` without a specific ask, give a useful snapshot:
 
 1. **Account balances** — where things stand
 2. **Recent notable transactions** — anything large, unusual, new recurring charges

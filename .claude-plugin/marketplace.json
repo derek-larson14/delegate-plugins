@@ -44,12 +44,12 @@
       "category": "productivity"
     },
     {
-      "name": "finance",
+      "name": "finances",
       "description": "Claude as your financial advisor — connects to your banks using Era Finance, and reasons over your accounts with the full context of your calendar, email, and work.",
       "author": {
         "name": "derek-larson14"
       },
-      "source": "./plugins/finance",
+      "source": "./plugins/finances",
       "category": "productivity"
     }
   ]
