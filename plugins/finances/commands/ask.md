@@ -21,15 +21,7 @@ Interpret the result:
 - **Bash runs and outputs `CLI_UNSET` or `CLI_PARTIAL`** → CLI environment but not set up; run `${CLAUDE_PLUGIN_ROOT}/scripts/era-setup.sh` (opens browser for Era OAuth), then Step 2. Expired tokens self-heal — `era-fetch.sh` auto-launches re-auth.
 - **Bash is not available** → Co-Work. Check if Era MCP tools are exposed (look for any tool starting with `knowledge__`, `transactions__`, or `accounts__`)
   - **Era tools present** → MCP path, go to Step 2
-  - **Era tools missing** → walk the user through adding the Era connector:
-    1. Co-Work settings (gear icon) → Connectors or MCP Servers
-    2. Add connector with URL: `context.era.app`
-    3. Sign in to Era and authorize
-    4. Re-run `/finances:ask`
-
-    **Flag before they add it:** Co-Work connectors are user-level, not per-conversation. Once Era is enabled, those tools are available in every Co-Work conversation, not just `/finances:ask`. That's fine if they want to ask ad-hoc finance questions anywhere — it's a footgun if they want tight scoping. If they want tight scoping, recommend the Claude Code path instead.
-
-The user does not need an Era Finance account preexisting — signup happens inside the OAuth / connector flow.
+  - **Era tools missing** → tell the user to add the Era connector: Settings → Connectors → Add custom connector → `context.era.app` → sign in and authorize. Then re-run `/finances:ask`. Signup happens inside the OAuth flow; no pre-existing Era account needed.
 
 ## Step 2 — Pull data
 
