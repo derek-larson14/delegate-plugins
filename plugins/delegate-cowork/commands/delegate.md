@@ -4,9 +4,23 @@ model: opus
 allowed-tools: Read, Grep, Glob, Edit, Write, AskUserQuestion, WebFetch, WebSearch
 ---
 
+## First Run: Where the list lives
+
+Before anything else, find the task list. Check for a `delegation.md` in the mounted workspace, and for a saved choice in `.delegate-config` at the workspace root.
+
+If neither exists, this is a first run. Ask once with AskUserQuestion where the running list should live, then save the answer to `.delegate-config` so you never ask again:
+
+- **Local file (recommended)** — create `delegation.md` in the workspace root. Simplest and fastest. You read and check off items in place, offline.
+- **Google Drive doc** — use the Google Drive connector to find or create a doc named "delegation" in the user's Drive. Read the task list from it each run, and write completion notes back to it.
+- **Google Drive sheet** — same, but a spreadsheet. Read task rows from it.
+
+Default to the local file if the user just confirms. For the Drive options, the user needs the Google Drive connector enabled in Co-Work; if it's missing, say so and fall back to a local file.
+
+Scratch notes always stay local in the mounted `scratch/` folder, even when the list lives in Drive. Write the work locally and link it from the list entry.
+
 ## Workspace Discovery
 Scan the mounted workspace for context files:
-- delegation.md (Claude's task queue)
+- the task list (local `delegation.md`, or the Drive doc/sheet set in `.delegate-config`)
 - tasks.md (user's tasks)
 - roadmap.md (upcoming milestones)
 - scratch/ (working notes)
@@ -16,9 +30,9 @@ Use what exists. Skip what doesn't. Don't create scaffolding.
 
 ## Phase 1: Research (complete before acting)
 
-Read `delegation.md` (primary input — Claude's task queue), then `tasks.md`, `roadmap.md`, and linked files to understand current state. Process items in delegation.md from top to bottom. Finish all context-gathering before categorizing. Don't leave "figure out X" as an output — do the figuring.
+Read the task list (the local `delegation.md`, or the Drive doc/sheet from `.delegate-config` — this is the primary input, Claude's task queue), then `tasks.md`, `roadmap.md`, and linked files to understand current state. Process items from top to bottom. Finish all context-gathering before categorizing. Don't leave "figure out X" as an output — do the figuring.
 
-If `delegation.md` is empty, say so.
+If the list is empty, say so.
 
 ## Phase 2: Categorize and Execute
 

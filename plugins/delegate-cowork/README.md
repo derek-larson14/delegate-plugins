@@ -12,6 +12,7 @@ Enable these in your Co-Work settings for the full experience:
 | Gmail | Recommended | `/morning`, `/weekly`, `/mail` |
 | GitHub | Optional | `/weekly` |
 | Granola | Optional | `/meeting` |
+| Google Drive | Optional | `/delegate` (only if your task list lives in Drive) |
 
 Every command gracefully handles missing connectors. At minimum, mount your workspace folder and have a `delegation.md` or `tasks.md`.
 
@@ -26,7 +27,7 @@ Every command gracefully handles missing connectors. At minimum, mount your work
 
 | Command | Description | Connectors |
 |---------|-------------|------------|
-| `/delegate` | Process delegation.md — autonomously handle Claude's task queue | None (pure file tools + web) |
+| `/delegate` | Process delegation.md — autonomously handle Claude's task queue | Google Drive (optional, if your list lives in Drive) |
 | `/morning` | Morning brief — state of things, today's focus, blockers, people | Calendar, Gmail |
 | `/weekly` | Weekly review as chief of staff — mechanical + emotional + strategic | GitHub, Calendar, Gmail |
 | `/meeting` | Search and summarize meeting notes | Granola, Calendar |
