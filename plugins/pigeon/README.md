@@ -33,7 +33,7 @@ Claude reads transcripts and starts working. Works in Claude Code and Co-Work. R
 
 Run `/pigeon:schedule` to process transcripts automatically. Works with both Claude Code (via launchd) and Co-Work (via scheduled sessions). Choose `work` for full execution or `route` for lighter routing-only.
 
-**A note on running unattended:** Voice transcripts flow through an external pipeline before reaching your agent. The `work` and `route` commands scan for prompt injection, but no scan is bulletproof. If you run on a schedule, review `.pigeon/auto.log` periodically. For an extra layer, install [Claude Guard](https://github.com/derek-larson14/claude-guard).
+**A note on running unattended:** Voice transcripts flow through an external pipeline before reaching your agent. The `work` and `route` commands scan for prompt injection, but no scan is bulletproof. If you run on a schedule, review `.pigeon/auto.log` periodically. For an extra layer, install [Belay](https://github.com/derek-larson14/belay).
 
 ## Transcript Sources (auto-detected)
 

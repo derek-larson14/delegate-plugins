@@ -18,7 +18,7 @@ Set up automated processing of Pigeon transcripts on a recurring schedule.
 **Mitigations:**
 - Use `pigeon:route` instead of `pigeon:work` if you want a lighter touch — it only appends to markdown files, never touches code.
 - Review the `.pigeon/` logs periodically.
-- Install [Claude Guard](https://github.com/derek-larson14/claude-guard) for an additional security layer that monitors agent actions.
+- Install [Belay](https://github.com/derek-larson14/belay) for an additional security layer that monitors agent actions.
 - Keep your Pigeon app updated — newer versions include tighter on-device validation.
 
 If you're not comfortable with unattended execution, skip this and run `/pigeon:work` or `/pigeon:route` manually when you're ready.
