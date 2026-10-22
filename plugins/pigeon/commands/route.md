@@ -8,7 +8,7 @@ Read new voice transcripts and help route ideas to the right places in this work
 
 ## Step 1: Setup check
 
-Check for `.pigeon/settings.json`. If it doesn't exist, run setup inline:
+Check for `.pigeon/settings.json` in this folder. If it isn't here but `~/.pigeon/settings.json` exists (the Pigeon setup prompt writes it), copy that file here and continue. If neither exists, run setup inline:
 
 Ask the user: "How do you want to access your Pigeon transcripts?"
 - **Google Drive (MCP)** -- read directly from Drive, no local sync needed

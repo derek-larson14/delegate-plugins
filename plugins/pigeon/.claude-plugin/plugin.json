@@ -1,6 +1,6 @@
 {
   "name": "pigeon",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Claude routes and acts on AI voice notes recorded through Pigeon",
   "author": {
     "name": "derek-larson14"
